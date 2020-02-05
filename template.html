@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Fortune500</title>
+  <meta name="description" content="Fortunes">
+  <meta name="author" content="m3gaDewD">
+
+  <style>
+  body {
+    background-color: black;
+    margin-top: 0;
+    overflow: hidden;
+    padding: 2rem;
+    color: white;
+    font: 1.3rem Inconsolata, monospace;
+    text-shadow: 0 0 5px #C8C8C8;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
+  }
+  ::selection {
+    background: #0080FF;
+    text-shadow: none;
+  }
+  pre {
+    margin: 0;
+  }
+  a {
+    color: white;
+  }
+  header {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  header a {
+  }
+  .button {
+    border-style: solid;
+    border-width: 1px;
+    border-color: green;
+    padding: 15px 15px 12px 15px;
+    color: green;
+    text-decoration: none;
+    text-shadow: 0 0 0;
+  }
+  .main {
+    margin-top: 20vh;
+  }
+
+  footer {
+    font-size: 14px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <div>
+      <a id="offensive"  class="button" href="/?offensive=true">
+        Show offensive
+      </a>
+    </div>
+  </header>
+  <div class="main">
+    <pre><output>%%FORTUNE%%</output></pre>
+  </div>
+  <footer>
+    <p>500 free guarantee. My code will never crash!</p>
+  </footer>
+  <script>
+
+    window.onload = function() {
+      let queryString = window.location.search;
+      let urlParams = new URLSearchParams(queryString);
+      let offensive = urlParams.get('offensive');
+
+      let a = document.getElementById('offensive');
+      if (offensive === 'true') {
+        a.innerText = 'Hide offensive'
+        a.setAttribute('href', '/?offensive=false');
+      } else {
+        a.innerText = 'Show offensive'
+        a.setAttribute('href', '/?offensive=true');
+      }
+
+    }
+  </script>
+</body>
+</html>
